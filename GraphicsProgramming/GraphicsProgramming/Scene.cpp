@@ -92,6 +92,8 @@ void Scene::render() {
 	glLightfv(GL_LIGHT1, GL_POSITION, PointCoords2);
 	glEnable(GL_LIGHT1);
 
+	
+
 	glBegin(GL_QUADS);
 	for (float z = -10.0f; z < 10.f; z += 1.0f)
 	{
