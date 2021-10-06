@@ -73,7 +73,7 @@ void Scene::render() {
 	// Reset transformations
 	glLoadIdentity();
 	// Set the camera
-	gluLookAt(0.0f, 0.0f, 6.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+	gluLookAt(0.0f, 1.0f, 6.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 	
 	// Render geometry/scene here -------------------------------------
 	
@@ -92,7 +92,18 @@ void Scene::render() {
 	glLightfv(GL_LIGHT1, GL_POSITION, PointCoords2);
 	glEnable(GL_LIGHT1);
 
-
+	glBegin(GL_QUADS);
+	for (float z = -10.0f; z < 10.f; z += 1.0f)
+	{
+		for (float x = -10.f; x < 10.f; x += 1.0f)
+		{
+			glVertex3f(x, 0, z);
+			glVertex3f(x + 1.f, 0, z);
+			glVertex3f(x + 1.f, 0, z + 1.f);
+			glVertex3f(x, 0, z + 1.f);
+		}
+	}
+	glEnd();
 
 	//glPushMatrix();
 	//glTranslatef(2, 1, -5);
@@ -213,6 +224,9 @@ void Scene::render() {
 		glPopMatrix();
 
 	}
+
+
+	
 
 	////midpoint
 	//glPopMatrix();
